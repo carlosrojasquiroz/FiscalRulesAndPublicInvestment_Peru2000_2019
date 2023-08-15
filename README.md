@@ -1,5 +1,5 @@
 # Welcome!
-This repository contains codes of the DSGE model and DSA section of the working paper "Fiscal rules and public investment: the case of Peru 2000-2019", which was co-written with Waldo Mendoza, Marco Vega, and Yuliño Anastacio. It was published as a working paper for the Inter-American Development Bank (IDB) in 2020. The link for downloading the paper is the following:
+This repository contains codes of the DSGE model and DSA section of the working paper **"Fiscal rules and public investment: the case of Peru 2000-2019"**, which was co-written with Waldo Mendoza, Marco Vega, and Yuliño Anastacio. It was published as a working paper for the Inter-American Development Bank (IDB) in 2020. The link for downloading the paper is the following:
 
 https://publications.iadb.org/en/fiscal-rules-and-public-investment-case-peru-2000-2019 
 
