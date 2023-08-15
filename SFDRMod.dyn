@@ -426,5 +426,5 @@ check;
 %------------------------------------------------------------------------------------------------------
 stoch_simul(order = 2, irf=50, nograph, hp_filter=100);
 %------------------------------------------------------------------------------------------------------
-IRF_pCo1=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, ...
+IRF_pCo2=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, ...
 invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
