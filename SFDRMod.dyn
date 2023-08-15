@@ -1,109 +1,94 @@
-%--------------------------------------------------------------------------
-% Fiscal rules and public investment: the case of Peru 2000-2018
-%--------------------------------------------------------------------------
-% The DSGE model
-% Model with a Fiscal Deficit Rule
-%--------------------------------------------------------------------------
-% Authors: Yulino Anastacio, Waldo Mendoza, Carlos Rojas and Marco Vega
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+% Fiscal rules and public investment: the case of Peru 2000-2019
+%------------------------------------------------------------------------------------------------------
+% The DSGE model with a Structural Fiscal Deficit Rule
+% Authors: Waldo Mendoza, Marco Vega, Carlos Rojas and Yulino Anastacio 
+%------------------------------------------------------------------------------------------------------
+% 1. Declaration of variables
+%------------------------------------------------------------------------------------------------------
+% 1.1 Endogenous variables
+var Welfare $W^R$, Welfare2 $W^{NR}$, lambda $\lambda$, cR $c^R$, cNR $c^{NR}$, hR $h^R$, hNR $h^{NR}$, 
+w $w$, p $p$, rL $r^L$, c $c$, cN $c^N$, cT $c^T$, cX $c^X$, cM $c^M$, pN $p^N$, pT $p^T$, yX $y^X$, 
+hX $h^X$, kX $k^X$, yN $y^N$, hN $h^N$, kN $k^N$, uX $u^X$, uN $u^N$, qX $q^X$, qN $q^N$, nX $n^X$, 
+nN $n^N$, lX $l^X$, lcN $l^N$, invX $i^X$, invN $i^N$, pI $p^I$, inv $i$, xN $x^N$,  xM $x^M$, 
+g $g$, dgstar $d^{G \star}$, dg $d^G$, rev $T$, drstar $d^{R \star}$, lR $l^R$, dstar $d^{\star}$, 
+imp $m$, expt $x$, tb $tb$, gdp $gdp$, rer $rer$, rstar $r^{\star}$, gdpm $gdp^N$, fn $fn$, rD $r^D$, 
+invG $i^G$, kG $k^G$, xNG $x^{NG}$, xMG $x^{MG}$, pIG $p^{IG}$;
 
-%--------------------------------------------------------------------------
-% Endogenous variables
-var 
-Welfare, Welfare2
-lambda $\lambda$, cR $c^R$, cNR $c^{NR}$, hR $h^R$, hNR $h^{NR}$, w $w$,
-p $p$, rL $r^L$, c $c$, cN $c^N$, cT $c^T$, cX $c^X$, cM $c^M$, pN $p^N$, 
-pT $p^T$, yX $y^X$, hX $h^X$, kX $k^X$, yN $y^N$, hN $h^N$, kN $k^N$, 
-uX $u^X$, uN $u^N$, qX $q^X$, qN $q^N$, nX $n^X$, nN $n^N$, lX $l^X$, 
-lcN $l^N$, invX $i^X$, invN $i^N$, pI $p^I$, inv $i$, xN $x^N$,  xM $x^M$, 
-g $g$, dgstar $d^{G \star}$, dg $d^G$, rev $T$, drstar $d^{R \star}$, 
-lR $l^R$, dstar $d^{\star}$, imp $m$, expt $x$, tb $tb$, gdp $gdp$, rer $rer$, 
-rstar $r^{\star}$, gdpm $gdp^N$, fn $fn$, rD $r^D$, invG $i^G$, 
-kG $k^G$, xNG $x^{NG}$, xMG $x^{MG}$, pIG $p^{IG}$; 
-%--------------------------------------------------------------------------
-% Auxiliary variables
-var sX $s^X$, sNs $s^N$, sC $s^C$, RP $RP$, sIG $s^{IG}$, srev $s^{rev}$, 
-sDG $s^{DG}$, sPB $s^{PB}$, sinv, ce;
-%--------------------------------------------------------------------------
-% Exogenous variables 
-var aX $a^X$, aN $a^N$, pX $p^X$, yCo $y^{Co}$, pCo $p^{Co}$, rW $r^W$, 
-sfA $\mathcal{A}$, shG $\mathcal{G}$, shIG $\mathcal{IG}$; 
-%--------------------------------------------------------------------------
-% Observable variables
-var yXobs $y^{X,obs}$, yNobs $y^{N,obs}$, cobs $c^{obs}$, RPobs ${RP}^{obs}$, 
-Igobs ${I}^{G,obs}$, Revobs ${rev}^{obs}$, sDobs $D^{obs}$, pCoobs $p^{co,obs}$, 
-rerobs ${rer}^{obs}$;
-%--------------------------------------------------------------------------
-% Shocks
-varexo epsaX $\varepsilon^{aX}$, epsaN $\varepsilon^N$, epspX $\varepsilon^X$,
-epsyCo $\varepsilon^{yCo}$, epspCo $\varepsilon^{pCo}$, epsrW $\varepsilon^{rW}$, 
-epssfA $\varepsilon^{D}$, epsshG $\varepsilon^{G}$, epsshIG $\varepsilon^{IG}$;
-%--------------------------------------------------------------------------
-% Estimation
-%--------------------------------------------------------------------------
-% Structural parameters
-parameters theta $\theta$, uve $v$, xi $\xi$, alphaX $\alpha_X$, 
-alphaN $\alpha_N$, delta $\delta$, deltaG $\delta_G$, phiIg $\phi^{IG}$, 
-gamma $\gamma$, gammaG $\gamma_G$, phiD $\phi_D$, phiW $\phi_W$, kappa $\kappa$, 
-nu $\nu$, epsilon $\epsilon$, varepsilonX $\upsilon_X$, varepsilonN $\upsilon_N$, 
-thetaX $\theta_X$, thetaN $\theta_N$, phiX $\phi_X$, phiN $\phi_N$, phiG $\phi_G$;
-% Exogenous variables
+% 1.2 Auxiliary variables
+var sX $s^X$, sNs $s^N$, sC $s^C$, RP $RP$, sIG $s^{IG}$, srev $s^{rev}$, sDG $s^{DG}$, sPB $s^{PB}$, 
+sinv $s^{inv}$, ce $c^{e}$;
+
+% 1.3 Exogenous variables 
+var aX $a^X$, aN $a^N$, pX $p^X$, yCo $y^{Co}$, pCo $p^{Co}$, rW $r^W$, sfA $\mathcal{A}$, 
+shG $\mathcal{G}$, shIG $\mathcal{IG}$;
+
+% 1.4 Observable variables
+var yXobs $y^{X,obs}$, yNobs $y^{N,obs}$, cobs $c^{obs}$, RPobs ${RP}^{obs}$, Igobs ${I}^{G,obs}$, 
+Revobs ${rev}^{obs}$, sDobs $D^{obs}$, pCoobs $p^{co,obs}$, rerobs ${rer}^{obs}$;
+
+% 1.5 Shocks
+varexo epsaX $\varepsilon^{aX}$, epsaN $\varepsilon^N$, epspX $\varepsilon^X$, epsyCo $\varepsilon^{yCo}$, 
+epspCo $\varepsilon^{pCo}$, epsrW $\varepsilon^{rW}$, epssfA $\varepsilon^{D}$, epsshG $\varepsilon^{G}$, 
+epsshIG $\varepsilon^{IG}$;
+%------------------------------------------------------------------------------------------------------
+% 2. Declaration of parameters
+%------------------------------------------------------------------------------------------------------
+% 2.1 Structural parameters
+parameters theta $\theta$, uve $v$, xi $\xi$, alphaX $\alpha_X$, alphaN $\alpha_N$, delta $\delta$, 
+deltaG $\delta_G$, phiIg $\phi^{IG}$, gamma $\gamma$, gammaG $\gamma_G$, phiD $\phi_D$, phiW $\phi_W$, 
+kappa $\kappa$, nu $\nu$, epsilon $\epsilon$, varepsilonX $\upsilon_X$, varepsilonN $\upsilon_N$, 
+thetaX $\theta_X$, thetaN $\theta_N$, phiX $\phi_X$, phiN $\phi_N$, phiG $\phi_G$, beta $\beta$, 
+phi $\phi$, dbar $\bar{d}$, iotaN $\iota^N$, iotaX $\iota^X$, varsigma $\varsigma$, etaC $\eta_C$, 
+hss $\bar{h}$, tauX_ss $\tau_X$, tauN_ss $\tau_N$, tauW_ss $\tau_W$, tauCo_ss $\tau_{Co}$
+etaR $\eta_R$;
+
+% 2.2 Stochastic processes
 parameters rhoaX $\rho_{aX}$, rhoaN $\rho_{aN}$, rhopX $\rho_{pX}$, 
 rhoyCo $\rho_{yCo}$, rhopCo $\rho_{pCo}$, rhorW $\rho_{rW}$, rhosfA $\rho_{\mathcal{A}}$, 
 rhoshG $\rho_{G}$, rhoshIG  $\rho_{IG}$;
-%--------------------------------------------------------------------------
-% Calibration
-%--------------------------------------------------------------------------
-% Steady state targets
+
+% 2.3 Steady-state targets
 parameters stb $s^{tb}$, sg $s^G$, lev $lev$, TargeT $\bar{fd}$, 
 sDGss $\bar{s}^{DG}$, sIGss $\bar{s}^{IG}$, SFDR $\eta_{SFDR}$;
-%--------------------------------------------------------------------------
-% Steady state parameters
-parameters lambdass $\bar{\lambda}$, cRss $\bar{c}^R$, cNRss $\bar{c}^{NR}$, 
-hRss $\bar{h}^R$, hNRss $\bar{h}^{NR}$, wss $\bar{w}$, pss $\bar{p}$, 
-rLss $\bar{r}^L$, css $\bar{c}$, cNss $\bar{c}^N$, cTss $\bar{c}^T$, 
-cXss $\bar{c}^X$, cMss $\bar{c}^M$, pNss $\bar{p}^N$, pTss $\bar{p}^T$, 
-yXss $\bar{y}^X$, hXss $\bar{h}^X$, kXss $\bar{k}^X$, yNss $\bar{y}^N$, 
-hNss $\bar{h}^N$, kNss $\bar{k}^N$, uXss $\bar{u}^X$, uNss $\bar{u}^N$, 
-qXss $\bar{q}^X$, qNss $\bar{q}^N$, nXss $\bar{n}^X$, nNss $\bar{n}^N$, 
-lXss $\bar{l}^X$, lcNss $\bar{l}^$, invXss $\bar{i}^X$, invNss $\bar{i}^N$, 
-pIss $\bar{p}^I$, invss $\bar{i}$, xNss $\bar{x}^N$, xMss $\bar{x}^M$, 
-gss $\bar{g}$, dgstarss $\bar{d}^{G \star}$, dgss $\bar{d}^G$, revss $\bar{T}$,
-drstarss $\bar{d}^{R \star}$, lRss $\bar{l}^R$, dstarss $\bar{d}^{\star}$, 
-impss $\bar{m}$, exptss $\bar{x}$, tbss $\bar{tb}$, gdpss $\bar{gdp}$, 
-rerss $\bar{rer}$, rstarss $\bar{r}^{\star}$, gdpmss $\bar{gdp}N$, 
-sNss $\bar{s}^N$, sXss $\bar{s}^X$, sCss $\bar{s}^C$, RPss $\bar{RP}$, 
-fnss $\bar{fn}$, rss $\bar{r}$, invGss $\bar{i}^G$, 
-kGss $\bar{k}^G$, xNGss $\bar{x}^{NG}$, xMGss $\bar{x}^{MG}$, pIGss $\bar{p}^{IG}$, 
-aXss $\bar{a}^X$, aNss $\bar{a}^N$, pXss $\bar{p}^X$, yCoss $\bar{y}^{Co}$, 
-pCoss $\bar{p}^{Co}$, rWss $\bar{r}^W$, tauC_ss  $\bar{\tau}_C$, sPBss $\bar{s}^{PB}$, sfAss $s^{\mathcal{A}}_{ss}$, 
-shGss $s^{\mathcal{G}_{ss}}$, shIGss  $s^{\mathcal{IG}_{ss}}$;
-%--------------------------------------------------------------------------
-% Other parameters
-parameters beta $\beta$, phi $\phi$, dbar $\bar{d}$, iotaN $\iota^N$, 
-iotaX $\iota^X$, varsigma $\varsigma$, etaC $\eta_C$, hss $\bar{h}$, 
-tauX_ss $\tau_X$, tauN_ss $\tau_N$, tauW_ss $\tau_W$, tauCo_ss $\tau_{Co}$
-etaR $\eta_R$;
-%--------------------------------------------------------------------------
-% If SFDR=1 then Fiscal Deficit Rule
-% If SFDR=0 then Structural Fiscal Deficit Rule
+
+% 2.4. Steady-state parameters
+parameters lambdass $\bar{\lambda}$, cRss $\bar{c}^R$, cNRss $\bar{c}^{NR}$, hRss $\bar{h}^R$, 
+hNRss $\bar{h}^{NR}$, wss $\bar{w}$, pss $\bar{p}$, rLss $\bar{r}^L$, css $\bar{c}$, cNss $\bar{c}^N$, 
+cTss $\bar{c}^T$, cXss $\bar{c}^X$, cMss $\bar{c}^M$, pNss $\bar{p}^N$, pTss $\bar{p}^T$, 
+yXss $\bar{y}^X$, hXss $\bar{h}^X$, kXss $\bar{k}^X$, yNss $\bar{y}^N$, hNss $\bar{h}^N$, kNss $\bar{k}^N$, 
+uXss $\bar{u}^X$, uNss $\bar{u}^N$, qXss $\bar{q}^X$, qNss $\bar{q}^N$, nXss $\bar{n}^X$, nNss $\bar{n}^N$, 
+lXss $\bar{l}^X$, lcNss $\bar{l}^$, invXss $\bar{i}^X$, invNss $\bar{i}^N$, pIss $\bar{p}^I$, 
+invss $\bar{i}$, xNss $\bar{x}^N$, xMss $\bar{x}^M$, gss $\bar{g}$, dgstarss $\bar{d}^{G \star}$, 
+dgss $\bar{d}^G$, revss $\bar{T}$, drstarss $\bar{d}^{R \star}$, lRss $\bar{l}^R$, 
+dstarss $\bar{d}^{\star}$, impss $\bar{m}$, exptss $\bar{x}$, tbss $\bar{tb}$, gdpss $\bar{gdp}$, 
+rerss $\bar{rer}$, rstarss $\bar{r}^{\star}$, gdpmss $\bar{gdp}N$, sNss $\bar{s}^N$, sXss $\bar{s}^X$, 
+sCss $\bar{s}^C$, RPss $\bar{RP}$, fnss $\bar{fn}$, rss $\bar{r}$, invGss $\bar{i}^G$, kGss $\bar{k}^G$, 
+xNGss $\bar{x}^{NG}$, xMGss $\bar{x}^{MG}$, pIGss $\bar{p}^{IG}$, aXss $\bar{a}^X$, aNss $\bar{a}^N$, 
+pXss $\bar{p}^X$, yCoss $\bar{y}^{Co}$, pCoss $\bar{p}^{Co}$, rWss $\bar{r}^W$, tauC_ss  $\bar{\tau}_C$, 
+sPBss $\bar{s}^{PB}$, sfAss $s^{\mathcal{A}}_{ss}$, shGss $s^{\mathcal{G}_{ss}}$, 
+shIGss  $s^{\mathcal{IG}_{ss}}$;
+
+% 2.5 Fiscal rule implementation
+% If SFDR=1, then Fiscal Deficit Rule
+% If SFDR=0, then Structural Fiscal Deficit Rule
 SFDR        =   0.0000;
-%--------------------------------------------------------------------------
-% Estimation
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+% 3. Calibration
+%------------------------------------------------------------------------------------------------------
 theta       =   2.0000;
 uve         =   1.5000;
-xi          =   0.5000; %
-alphaX      =   0.5500; %
-alphaN      =   0.7500; %
-delta       =   0.0800; %
-deltaG      =   0.0350; %
-gamma       =   0.4000; %
-gammaG      =   0.8000; %
-phiD        =   0.0010; %
-phiW        =   0.0010; %
-kappa       =   0.6500; %
-nu          =   0.9700; %
+xi          =   0.5000; 
+alphaX      =   0.5500; 
+alphaN      =   0.7500; 
+delta       =   0.0800; 
+deltaG      =   0.0350; 
+gamma       =   0.4000; 
+gammaG      =   0.8000; 
+phiD        =   0.0010; 
+phiW        =   0.0010; 
+kappa       =   0.6500; 
+nu          =   0.9700; 
 epsilon     =   0.7500; 
 varepsilonX =   1.5000; 
 varepsilonN =   1.5000;
@@ -112,28 +97,22 @@ thetaN      =   0.1000;
 phiX        =   0.1000; 
 phiN        =   0.1000;
 phiIg       =   0.1000;
-phiG        =   0.4800; 
-rhoaX       =   0.5097; % 
-rhoaN       =   0.7552; %
-rhopX       =   0.5159; %
-rhoyCo      =   0.4352; %
-rhopCo      =   0.5630; %
-rhorW       =   0.2994; %
-rhosfA      =   0.2960; %
-rhoshG      =   0.4718; %
-rhoshIG     =   0.5919; %
-%--------------------------------------------------------------------------
-% Steady state targets
-%--------------------------------------------------------------------------
+phiG        =   0.4800;
+rhoaX       =   0.5097; 
+rhoaN       =   0.7552; 
+rhopX       =   0.5159; 
+rhoyCo      =   0.4352; 
+rhopCo      =   0.5630; 
+rhorW       =   0.2994; 
+rhosfA      =   0.2960; 
+rhoshG      =   0.4718; 
+rhoshIG     =   0.5919; 
 stb         =   0.0200;
 sIGss       =   0.0450;
 sg          =   0.1100;
 sDGss       =   0.3000;
 lev         =   2.0500;
-TargeT      =   0.0050;
-%--------------------------------------------------------------------------
-% Steady state parameters
-%--------------------------------------------------------------------------
+TargeT      =   0.0100;
 gdpmss      =   0.6250;
 RPss        =   1.0330;
 rWss        =   1.0124;
@@ -146,10 +125,13 @@ sfAss       =   1.0000;
 shGss       =   1.0000;
 shIGss      =   1.0000;
 hss         =   0.3000;
-tauX_ss     =   0.0015; %
-tauN_ss     =   0.0005; %
-tauW_ss     =   0.0230; %
-tauCo_ss    =   0.1500; %
+tauX_ss     =   0.0015; 
+tauN_ss     =   0.0005; 
+tauW_ss     =   0.0230; 
+tauCo_ss    =   0.1500;
+%------------------------------------------------------------------------------------------------------
+% 4. Steady-state
+%------------------------------------------------------------------------------------------------------
 hNRss       =   hss;
 hRss        =   hss;
 hNss        =   hss/2;
@@ -219,17 +201,20 @@ sXss        =   yXss/gdpss;
 sCss        =   pss*css/gdpmss;
 sPBss       =   (revss-pNss*gss-pIGss*invGss)/gdpmss;
 sOBss       =   (sPBss-dgstarss*(rss-1)-dgss*(rss-1))/gdpmss;
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+% 5. The model (equilibrium conditions)
+%------------------------------------------------------------------------------------------------------
 model;
-%--------------------------------------------------------------------------
 % Ricardian households (4)
 exp(lambda)*(1+tauC_ss)              =   (exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(-theta);
 exp(lambda)/exp(p)*(1-tauW_ss)*exp(w)=   (exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(-theta)*varsigma*exp(hR)^uve;
 exp(lambda)/exp(p)                   =   beta*(exp(rstar))*exp(lambda(+1))/exp(p(+1));
 exp(lambda)                          =   beta*exp(rL)*exp(lambda(+1));
+
 % Non ricardian households (2)
 (exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(-theta)*varsigma*exp(hNR)^uve  =  (exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(-theta)*(1-tauW_ss)/(1+tauC_ss)*exp(w)/exp(p);
 (1+tauC_ss)*exp(cNR)                 =   (1-tauW_ss)*exp(w)/exp(p)*exp(hNR);
+
 % Aggregate consumption (6)
 exp(c)                               =   (phi^(1/epsilon)*(exp(cN))^(1-1/epsilon)+(1-phi)^(1/epsilon)*(exp(cT))^(1-1/epsilon))^(epsilon/(epsilon-1));
 exp(cT)                              =   (exp(cX)/xi)^xi*(exp(cM)/(1-xi))^(1-xi);
@@ -237,14 +222,17 @@ exp(cN)                              =   phi*(exp(p)/exp(pN))^epsilon*exp(c);
 exp(cT)                              =   (1-phi)*(exp(p)/exp(pT))^epsilon*exp(c);
 exp(cX)                              =   xi*(exp(pT)/exp(pX))*exp(cT);
 exp(cM)                              =   (1-xi)*exp(pT)*exp(cT);
-% Tradables (3)
+
+% Tradable (3)
 exp(yX)                              =   exp(aX)*exp(hX)^alphaX*exp(kX(-1))^(1-alphaX-thetaX)*exp(kG(-1))^(thetaX);
 exp(w)                               =   (1-tauX_ss)*exp(pX)*alphaX*exp(yX)/exp(hX);
 exp(uX)                              =   (1-tauX_ss)*exp(pX)*(1-alphaX-thetaX)*exp(yX)/exp(kX(-1));
+
 % Non tradable (3)
 exp(yN)                              =   exp(aN)*exp(hN)^alphaN*exp(kN(-1))^(1-alphaN-thetaN)*exp(kG(-1))^(thetaN);
 exp(w)                               =   (1-tauN_ss)*exp(pN)*alphaN*exp(yN)/exp(hN);
 exp(uN)                              =   (1-tauN_ss)*exp(pN)*(1-alphaN-thetaN)*exp(yN)/exp(kN(-1));
+
 % Entrepreneurs (6)
 exp(qX)*exp(kX)                                 =   exp(nX)+exp(p)*exp(lX);
 (exp(uX(+1))+(1-delta)*exp(qX(+1)))/exp(qX)     =   exp(rL)*RPss*(exp(qX)*exp(kX)/exp(nX)*1/lev)^(varepsilonX);
@@ -252,6 +240,7 @@ exp(nX)                                         =   nu*((exp(uX)+(1-delta)*exp(q
 exp(qN)*exp(kN)                                 =   exp(nN)+exp(p)*exp(lcN);
 (exp(uN(+1))+(1-delta)*exp(qN(+1)))/exp(qN)     =   exp(rL)*RPss*(exp(qN)*exp(kN)/exp(nN)*1/lev)^(varepsilonN);
 exp(nN)                                         =   nu*((exp(uN)+(1-delta)*exp(qN))*exp(kN(-1))-exp(p)*exp(lcN(-1))*(exp(rL(-1))))+iotaN;
+
 % Capital and investment (7)
 exp(kX)                              =   (1-delta)*exp(kX(-1))+(1-phiX/2*(exp(invX)/exp(invX(-1))-1)^2)*exp(invX);
 exp(pI)                              =   exp(qX)*(1-phiX/2*(exp(invX)/exp(invX(-1))-1)^2-phiX*(exp(invX)/exp(invX(-1))-1)*exp(invX)/exp(invX(-1))) + beta*exp(lambda(+1))/exp(lambda)*exp(qX(+1))*phiX*(exp(invX(+1))/exp(invX)-1)*(exp(invX(+1))/exp(invX))^2;
@@ -260,7 +249,8 @@ exp(pI)                              =   exp(qN)*(1-phiN/2*(exp(invN)/exp(invN(-
 exp(inv)                             =   (exp(xN)/gamma)^gamma*(exp(xM)/(1-gamma))^(1-gamma);
 exp(xN)                              =   gamma*(exp(pI)/exp(pN))*exp(inv);
 exp(xM)                              =   (1-gamma)*exp(pI)*exp(inv);
-% Fiscal policy (9)
+
+% Fiscal policy (10)
 fn                                   =   exp(pN)*exp(g)+exp(pIG)*exp(invG)+dgstar(-1)*exp(rstar(-1))+exp(p)*dg(-1)*exp(rD(-1))-exp(rev)+sfA;
 dgstar                               =   (1-phiG)*fn;
 exp(p)*dg                            =   phiG*fn;
@@ -271,7 +261,8 @@ exp(invG)                            =   (exp(xNG)/gammaG)^gammaG*(exp(xMG)/(1-g
 exp(xNG)                             =   gammaG*(exp(pIG)/exp(pN))*exp(invG);
 exp(xMG)                             =   (1-gammaG)*exp(pIG)*exp(invG);
 exp(pN)*exp(g)/gdpmss                =   exp(shG);
-% Markets clearing (14)
+
+% Markets clearing (15)
 exp(hX)+exp(hN)                      =   (1-kappa)*exp(hR)+kappa*exp(hNR);
 exp(c)                               =   (1-kappa)*exp(cR)+kappa*exp(cNR);
 dstar                                =   (1-kappa)*drstar+dgstar;
@@ -287,6 +278,7 @@ exp(rer)                             =   1/exp(p);
 exp(rstar)                           =   exp(rW)+exp(phiW*(dstar-dstarss)/dstarss)-1;
 exp(rD)                              =   exp(rL)+exp(phiW*(dg-dgss)/dgss)-1;
 exp(gdpm)                            =   exp(p)*exp(gdp);
+
 % Exogenous process (9)
 aX                                   =  (1-rhoaX)*log(aXss)+rhoaX*aX(-1)+epsaX; % 1. productivity of exportable sector
 aN                                   =  (1-rhoaN)*log(aNss)+rhoaN*aN(-1)+epsaN; % 2. productivity of non-tradable sector 
@@ -297,7 +289,8 @@ rW                                   =  (1-rhorW)*log(rWss)+rhorW*rW(-1)+epsrW; 
 shG                                  =  (1-rhoshG)*log(sg)+rhoshG*shG(-1)+epsshG; % 7. public expenditures
 sfA                                  =  (1-rhosfA)*log(sfAss)+rhosfA*sfA(-1)+epssfA; % 8. stock-flow adjustments
 shIG                                 =  (1-rhoshIG)*log(TargeT)+rhoshIG*shIG(-1)+epsshIG; % 9. public investment
-% Auxiliary variables (8)
+
+% Auxiliary variables (12)
 exp(sX)                              =  exp(yX)/exp(gdp);
 exp(sNs)                             =  exp(yN)/exp(gdp);
 exp(sC)                              =  exp(p)*exp(c)/exp(gdpm);
@@ -308,10 +301,10 @@ sDG                                  =  fn/exp(gdpm);
 exp(sinv)                            =  exp(pI)*exp(inv)/exp(gdpm);
 exp(ce)                              =  exp(pN)*exp(g)/exp(gdpm);
 exp(sPB)                             =  (exp(rev)-exp(pN)*exp(g)-exp(pIG)*exp(invG))/exp(gdpm); 
-(Welfare)                            =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
-(Welfare2)                           =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
+Welfare                              =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
+Welfare2                             =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
 
-% Observable variables
+% Observable variables (10)
 yXobs                                = exp(sX)-exp(steady_state(sX));
 yNobs                                = exp(sNs)-exp(steady_state(sNs));
 cobs                                 = exp(sC)-exp(steady_state(sC));
@@ -322,9 +315,10 @@ sDobs                                = sDG-steady_state(sDG);
 pCoobs                               = exp(pCo)-exp(steady_state(pCo));
 rerobs                               = exp(rer)-exp(steady_state(rer));
 end;
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
+% 6. Steady-state computation
+%------------------------------------------------------------------------------------------------------
 steady_state_model;
-%--------------------------------------------------------------------------
 lambda              =log(lambdass); 
 cR                  =log(cRss); 
 cNR                 =log(cNRss); 
@@ -412,9 +406,9 @@ sDobs               =0;
 pCoobs              =0;
 rerobs              =0;
 end;
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
 shocks;
-%--------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------
 //var epsaX   ; stderr 0.0373; 
 //var epsaN   ; stderr 0.0221; 
 //var epspX   ; stderr 0.0628; 
@@ -425,22 +419,12 @@ var epspCo  ; stderr 0.0764;
 //var epsshG  ; stderr 0.0300;
 //var epsshIG ; stderr 0.1163;
 end;
-%-------------------------------------------------------------------------- 
+%------------------------------------------------------------------------------------------------------
 resid;
 steady;
 check;
-//write_latex_dynamic_model;
-//write_latex_static_model;
-//write_latex_parameter_table;
-//write_latex_definitions;
-%--------------------------------------------------------------------------
-stoch_simul(order = 2, irf=50, hp_filter=100, nograph);
-%--------------------------------------------------------------------------
-IRF_pCo2=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
-//IRF_rW2=[gdp_epsrW, yX_epsrW, yN_epsrW, sC_epsrW, sinv_epsrW, ce_epsrW, sIG_epsrW, invG_epsrW, sPB_epsrW, sDG_epsrW, rer_epsrW, RP_epsrW];
-//IRF_shG2=[gdp_epsshG, yX_epsshG, yN_epsshG, sC_epsshG, sinv_epsshG, ce_epsshG, sIG_epsshG, invG_epsshG, sPB_epsshG, sDG_epsshG, rer_epsshG, RP_epsshG];
-//IRF_shIG2=[gdp_epsshIG, yX_epsshIG, yN_epsshIG, sC_epsshIG, sinv_epsshIG, ce_epsshIG, sIG_epsshIG, invG_epsshIG, sPB_epsshIG, sDG_epsshIG, rer_epsshIG, RP_epsshIG];
-//IRF_aX2=[gdp_epsaX, yX_epsaX, yN_epsaX, sC_epsaX, sinv_epsaX, ce_epsaX, sIG_epsaX, invG_epsaX, sPB_epsaX, sDG_epsaX, rer_epsaX, RP_epsaX];
-//IRF_aN2=[gdp_epsaN, yX_epsaN, yN_epsaN, sC_epsaN, sinv_epsaN, ce_epsaN, sIG_epsaN, invG_epsaN, sPB_epsaN, sDG_epsaN, rer_epsaN, RP_epsaN];
-//Multipliers=[gdp_epsshG(1)/g_epsshG(1)*100 gdp_epsshIG(1)/invG_epsshIG(1)*100];
-//save IRFs02 IRF_pCo2 IRF_rW2 IRF_shG2 IRF_shIG2 IRF_aX2 IRF_aN2 Multipliers;
+%------------------------------------------------------------------------------------------------------
+stoch_simul(order = 2, irf=50, nograph, hp_filter=100);
+%------------------------------------------------------------------------------------------------------
+IRF_pCo1=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, ...
+invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
