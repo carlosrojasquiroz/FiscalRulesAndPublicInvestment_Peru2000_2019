@@ -286,9 +286,9 @@ pX                                   =  (1-rhopX)*log(pXss)+rhopX*pX(-1)+epspX; 
 yCo                                  =  (1-rhoyCo)*log(yCoss)+rhoyCo*yCo(-1)+epsyCo; % 4. commodities production
 pCo                                  =  (1-rhopCo)*log(pCoss)+rhopCo*pCo(-1)-epspCo; % 5. commodities prices 
 rW                                   =  (1-rhorW)*log(rWss)+rhorW*rW(-1)+epsrW; % 6. foreign interest rate
-shG                                  =  (1-rhoshG)*log(sg)+rhoshG*shG(-1)+epsshG; % 7. public expenditures
+shG                                  =  (1-rhoshG)*log(TargeT)+rhoshG*shG(-1)+epsshG; % 7. public expenditures
 sfA                                  =  (1-rhosfA)*log(sfAss)+rhosfA*sfA(-1)+epssfA; % 8. stock-flow adjustments
-shIG                                 =  (1-rhoshIG)*log(TargeT)+rhoshIG*shIG(-1)+epsshIG; % 9. public investment
+shIG                                 =  (1-rhoshIG)*log(shIGss)+rhoshIG*shIG(-1)+epsshIG; % 9. public investment
 
 % Auxiliary variables (12)
 exp(sX)                              =  exp(yX)/exp(gdp);
@@ -301,8 +301,8 @@ sDG                                  =  fn/exp(gdpm);
 exp(sinv)                            =  exp(pI)*exp(inv)/exp(gdpm);
 exp(ce)                              =  exp(pN)*exp(g)/exp(gdpm);
 exp(sPB)                             =  (exp(rev)-exp(pN)*exp(g)-exp(pIG)*exp(invG))/exp(gdpm); 
-Welfare                              =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
-Welfare2                             =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
+(Welfare)                            =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
+(Welfare2)                           =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
 
 % Observable variables (10)
 yXobs                                = exp(sX)-exp(steady_state(sX));
@@ -319,7 +319,7 @@ end;
 % 6. Steady-state computation
 %------------------------------------------------------------------------------------------------------
 steady_state_model;
-lambda              =log(lambdass); 
+ambda              =log(lambdass); 
 cR                  =log(cRss); 
 cNR                 =log(cNRss); 
 hR                  =log(hRss); 
