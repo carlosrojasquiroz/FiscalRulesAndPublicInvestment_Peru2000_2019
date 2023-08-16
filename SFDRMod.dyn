@@ -301,8 +301,8 @@ sDG                                  =  fn/exp(gdpm);
 exp(sinv)                            =  exp(pI)*exp(inv)/exp(gdpm);
 exp(ce)                              =  exp(pN)*exp(g)/exp(gdpm);
 exp(sPB)                             =  (exp(rev)-exp(pN)*exp(g)-exp(pIG)*exp(invG))/exp(gdpm); 
-Welfare                              =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
-Welfare2                             =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
+(Welfare)                            =  ((exp(cR)-varsigma*exp(hR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare(+1));
+(Welfare2)                           =  ((exp(cNR)-varsigma*exp(hNR)^(1+uve)/(1+uve))^(1-theta)-1)/(1-theta)+beta*(Welfare2(+1));
 
 % Observable variables (10)
 yXobs                                = exp(sX)-exp(steady_state(sX));
@@ -426,8 +426,3 @@ check;
 %------------------------------------------------------------------------------------------------------
 stoch_simul(order = 2, irf=50, nograph, hp_filter=100);
 %------------------------------------------------------------------------------------------------------
-IRF_pCo2=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, ...
-invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
-IRF_rW2=[gdp_epsrW, yX_epsrW, yN_epsrW, sC_epsrW, sinv_epsrW, ce_epsrW, sIG_epsrW, invG_epsrW, ...
-sPB_epsrW, sDG_epsrW, rer_epsrW, RP_epsrW];
-save IRFs02 IRF_pCo2 IRF_rW2
