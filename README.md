@@ -9,7 +9,10 @@ https://publications.iadb.org/en/fiscal-rules-and-public-investment-case-peru-20
 
 ## Files
 
-*BaseMod.dyn* : model with the conventional fiscal deficit rule
-*SFDRMod.dyn*: model with a structural fiscal deficit rule
-*CDRMod.dyn*: model with a current deficit fiscal rule
-*GraphsIRFs.m*: script for graphing the impulse-response functions
+- *BaseMod.dyn* : model with the conventional fiscal deficit rule
+
+- *SFDRMod.dyn*: model with a structural fiscal deficit rule
+
+- *CDRMod.dyn*: model with a current deficit fiscal rule
+
+- *GraphsIRFs.m*: script for graphing the impulse-response functions
