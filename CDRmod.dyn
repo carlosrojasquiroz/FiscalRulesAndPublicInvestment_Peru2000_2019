@@ -72,7 +72,7 @@ shIGss  $s^{\mathcal{IG}_{ss}}$;
 % 2.5 Fiscal rule implementation
 % If SFDR=1, then Fiscal Deficit Rule
 % If SFDR=0, then Structural Fiscal Deficit Rule
-SFDR        =   0.0000;
+SFDR        =   1.0000;
 %------------------------------------------------------------------------------------------------------
 % 3. Calibration
 %------------------------------------------------------------------------------------------------------
