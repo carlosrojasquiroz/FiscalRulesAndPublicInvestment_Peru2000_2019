@@ -13,7 +13,7 @@ hX $h^X$, kX $k^X$, yN $y^N$, hN $h^N$, kN $k^N$, uX $u^X$, uN $u^N$, qX $q^X$, 
 nN $n^N$, lX $l^X$, lcN $l^N$, invX $i^X$, invN $i^N$, pI $p^I$, inv $i$, xN $x^N$,  xM $x^M$, 
 g $g$, dgstar $d^{G \star}$, dg $d^G$, rev $T$, drstar $d^{R \star}$, lR $l^R$, dstar $d^{\star}$, 
 imp $m$, expt $x$, tb $tb$, gdp $gdp$, rer $rer$, rstar $r^{\star}$, gdpm $gdp^N$, fn $fn$, rD $r^D$, 
-invG $i^G$, kG $k^G$, xNG $x^{NG}$, xMG $x^{MG}$, pIG $p^{IG}$;
+invG $i^G$, kG $k^G$, xNG $x^{NG}$, xMG $x^{MG}$, pIG $p^{IG}$; 
 
 % 1.2 Auxiliary variables
 var sX $s^X$, sNs $s^N$, sC $s^C$, RP $RP$, sIG $s^{IG}$, srev $s^{rev}$, sDG $s^{DG}$, sPB $s^{PB}$, 
@@ -319,7 +319,7 @@ end;
 % 6. Steady-state computation
 %------------------------------------------------------------------------------------------------------
 steady_state_model;
-ambda              =log(lambdass); 
+lambda              =log(lambdass); 
 cR                  =log(cRss); 
 cNR                 =log(cNRss); 
 hR                  =log(hRss); 
