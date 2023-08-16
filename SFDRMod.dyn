@@ -430,3 +430,4 @@ IRF_pCo2=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, s
 invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
 IRF_rW2=[gdp_epsrW, yX_epsrW, yN_epsrW, sC_epsrW, sinv_epsrW, ce_epsrW, sIG_epsrW, invG_epsrW, ...
 sPB_epsrW, sDG_epsrW, rer_epsrW, RP_epsrW];
+save IRFs02 IRF_pCo2 IRF_rW2
