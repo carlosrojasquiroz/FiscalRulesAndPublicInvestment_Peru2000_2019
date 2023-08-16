@@ -414,7 +414,7 @@ shocks;
 //var epspX   ; stderr 0.0628; 
 //var epsyCo  ; stderr 0.0250; 
 var epspCo  ; stderr 0.0764; 
-//var epsrW   ; stderr 0.0104;
+var epsrW   ; stderr 0.0104;
 //var epssfA  ; stderr 0.0201;
 //var epsshG  ; stderr 0.0300;
 //var epsshIG ; stderr 0.1163;
@@ -428,3 +428,5 @@ stoch_simul(order = 2, irf=50, nograph, hp_filter=100);
 %------------------------------------------------------------------------------------------------------
 IRF_pCo1=[gdp_epspCo, yX_epspCo, yN_epspCo, sC_epspCo, sinv_epspCo, ce_epspCo, sIG_epspCo, ...
 invG_epspCo, sPB_epspCo, sDG_epspCo, rer_epspCo, RP_epspCo];
+IRF_rW1=[gdp_epsrW, yX_epsrW, yN_epsrW, sC_epsrW, sinv_epsrW, ce_epsrW, sIG_epsrW, invG_epsrW, ...
+sPB_epsrW, sDG_epsrW, rer_epsrW, RP_epsrW];
